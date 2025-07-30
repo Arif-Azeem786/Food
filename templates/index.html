@@ -18,8 +18,139 @@
         user-select: none; /* Standard */
       }
 
+      /* Scroll Animations */
+      .fade-in {
+        opacity: 1;
+        transform: translateY(0);
+        transition: all 0.8s ease-out;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .slide-in-left {
+        opacity: 1;
+        transform: translateX(0);
+        transition: all 0.8s ease-out;
+      }
+
+      .slide-in-left.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .slide-in-right {
+        opacity: 1;
+        transform: translateX(0);
+        transition: all 0.8s ease-out;
+      }
+
+      .slide-in-right.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .scale-in {
+        opacity: 1;
+        transform: scale(1);
+        transition: all 0.8s ease-out;
+      }
+
+      .scale-in.visible {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .rotate-in {
+        opacity: 0;
+        transform: rotate(-10deg) scale(0.8);
+        transition: all 0.8s ease-out;
+      }
+
+      .rotate-in.visible {
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      }
+
+      .bounce-in {
+        opacity: 1;
+        transform: scale(1);
+        transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+
+      .bounce-in.visible {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .flip-in {
+        opacity: 0;
+        transform: perspective(400px) rotateY(90deg);
+        transition: all 0.8s ease-out;
+      }
+
+      .flip-in.visible {
+        opacity: 1;
+        transform: perspective(400px) rotateY(0deg);
+      }
+
+      /* Floating Animation */
+      .float {
+        animation: float 3s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      /* Pulse Animation */
+      .pulse {
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%, 100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      /* Shake Animation */
+      .shake {
+        animation: shake 0.5s ease-in-out;
+      }
+
+      @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-5px); }
+        75% { transform: translateX(5px); }
+      }
+
+      /* Glow Animation */
+      .glow {
+        animation: glow 2s ease-in-out infinite alternate;
+      }
+
+      @keyframes glow {
+        from {
+          box-shadow: 0 0 5px rgba(154, 132, 120, 0.5);
+        }
+        to {
+          box-shadow: 0 0 20px rgba(154, 132, 120, 0.8), 0 0 30px rgba(154, 132, 120, 0.6);
+        }
+      }
+
       body {
-        background-color: #0a0a1a;
+        background-color: #1E130C;
         color: #e0e0e0;
         line-height: 1.6;
         font-family: "Poppins", sans-serif;
@@ -33,7 +164,7 @@
         justify-content: space-between;
         align-items: center;
         padding: 20px 50px;
-        background-color: #05050f;
+        background-color: #1E130C;
         color: white;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
       }
@@ -41,12 +172,12 @@
       .logo {
         font-size: 28px;
         font-weight: 700;
-        color: #007bff;
+        color: #9A8478;
         transition: all 0.3s ease; /* Added transition for logo */
       }
 
       .logo:hover {
-        color: #87ceeb; /* Hover effect for logo */
+        color: #C4B5A0; /* Hover effect for logo */
         transform: scale(1.05);
       }
 
@@ -67,10 +198,10 @@
       }
 
       .nav-links a:hover {
-        color: #87ceeb;
+        color: #9A8478;
         transform: translateY(-3px);
-        text-shadow: 0 0 15px rgba(135, 206, 235, 0.8);
-        background-color: rgba(135, 206, 235, 0.1);
+        text-shadow: 0 0 15px rgba(154, 132, 120, 0.8);
+        background-color: rgba(154, 132, 120, 0.1);
         border-radius: 4px;
         padding: 5px 10px;
       }
@@ -78,14 +209,16 @@
       /* Hero Section */
       .hero {
         text-align: center;
-        padding: 80px 20px;
-        
-         background:  url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
-            center/cover;
+        padding: 30px 0 30px 0;
+        background: linear-gradient(135deg, rgba(30,19,12,0.8), rgba(154,132,120,0.4)), url("{{ url_for('static', filename='foddies.png.png') }}");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 100% auto;
         color: white;
         position: relative;
         overflow: hidden;
-     
+        min-height: 400px;
+        background-blend-mode: multiply;
       }
 
       .hero-content {
@@ -94,27 +227,222 @@
       }
 
       .hero h1 {
-        font-size: 4rem;
+        font-size: 4.5rem;
         margin-bottom: 20px;
-        font-family: "Poppins", cursive;
-        font-weight: 700;
-        color: #e91e63;
-        text-shadow: 0 0 20px rgba(233, 30, 99, 0.6),
-          0 0 40px rgba(233, 30, 99, 0.4), 0 0 60px rgba(233, 30, 99, 0.2);
-        letter-spacing: 2px;
-        animation: skyBlueGlow 2s ease-in-out infinite alternate;
+        font-family: "Poppins", sans-serif;
+        font-weight: 800;
+        background: linear-gradient(135deg, #9A8478, #C4B5A0, #9A8478);
+        background-size: 200% 200%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 0 0 30px rgba(154, 132, 120, 0.8),
+          0 0 60px rgba(154, 132, 120, 0.6), 0 0 90px rgba(154, 132, 120, 0.4);
+        letter-spacing: 3px;
+        animation: carbonPulse 3s ease-in-out infinite alternate, 
+                   float 4s ease-in-out infinite,
+                   gradientShift 4s ease-in-out infinite;
+        position: relative;
+        overflow: hidden;
       }
 
-      @keyframes skyBlueGlow {
+      .hero h1::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(154, 132, 120, 0.4), transparent);
+        animation: shimmer 3s ease-in-out infinite;
+      }
+
+      .hero-subtitle {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+        color: #C4B5A0;
+        font-weight: 400;
+        animation: fadeInUp 2s ease-out 0.5s both, 
+                   pulse 3s ease-in-out infinite 2s,
+                   textGlow 4s ease-in-out infinite 1s;
+        text-shadow: 0 0 15px rgba(196, 181, 160, 0.6);
+        letter-spacing: 1px;
+      }
+
+      .hero-features {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-top: 30px;
+        animation: fadeInUp 2s ease-out 1s both;
+      }
+
+      .feature-tag {
+        background: linear-gradient(135deg, rgba(154, 132, 120, 0.2), rgba(196, 181, 160, 0.1));
+        border: 2px solid #9A8478;
+        border-radius: 25px;
+        padding: 12px 20px;
+        color: #C4B5A0;
+        font-weight: 600;
+        font-size: 1rem;
+        letter-spacing: 1px;
+        transition: all 0.4s ease;
+        animation: featureFloat 4s ease-in-out infinite;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .feature-tag:nth-child(1) {
+        animation-delay: 0s;
+      }
+
+      .feature-tag:nth-child(2) {
+        animation-delay: 0.5s;
+      }
+
+      .feature-tag:nth-child(3) {
+        animation-delay: 1s;
+      }
+
+      .feature-tag::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(154, 132, 120, 0.3), transparent);
+        transition: left 0.6s ease;
+      }
+
+      .feature-tag:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 10px 25px rgba(154, 132, 120, 0.4);
+        border-color: #C4B5A0;
+        color: #9A8478;
+      }
+
+      .feature-tag:hover::before {
+        left: 100%;
+      }
+
+      .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+          radial-gradient(circle at 20% 80%, rgba(154, 132, 120, 0.15) 0%, transparent 50%),
+          radial-gradient(circle at 80% 20%, rgba(196, 181, 160, 0.1) 0%, transparent 50%),
+          linear-gradient(135deg, rgba(30, 19, 12, 0.3) 0%, rgba(154, 132, 120, 0.1) 100%);
+        animation: backgroundShift 8s ease-in-out infinite;
+      }
+
+      @keyframes backgroundShift {
+        0%, 100% {
+          opacity: 0.3;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.6;
+          transform: scale(1.1);
+        }
+      }
+
+      @keyframes carbonPulse {
         from {
-          text-shadow: 0 0 20px rgba(135, 206, 235, 0.8),
-            0 0 40px rgba(135, 206, 235, 0.6), 0 0 60px rgba(135, 206, 235, 0.4);
+          text-shadow: 0 0 20px rgba(154, 132, 120, 0.8),
+            0 0 40px rgba(154, 132, 120, 0.6), 0 0 60px rgba(154, 132, 120, 0.4);
           transform: scale(1);
         }
         to {
-          text-shadow: 0 0 30px rgba(135, 206, 235, 1),
-            0 0 60px rgba(135, 206, 235, 0.8), 0 0 90px rgba(135, 206, 235, 0.6);
+          text-shadow: 0 0 30px rgba(154, 132, 120, 1),
+            0 0 60px rgba(154, 132, 120, 0.8), 0 0 90px rgba(154, 132, 120, 0.6);
           transform: scale(1.05);
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes gradientShift {
+        0%, 100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      @keyframes shimmer {
+        0% {
+          left: -100%;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+
+      @keyframes textGlow {
+        0%, 100% {
+          text-shadow: 0 0 15px rgba(196, 181, 160, 0.6);
+        }
+        50% {
+          text-shadow: 0 0 25px rgba(196, 181, 160, 0.9),
+                       0 0 35px rgba(196, 181, 160, 0.7);
+        }
+      }
+
+      .animated-text {
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+        white-space: nowrap;
+        border-right: 3px solid #9A8478;
+        animation: typewriter 3s steps(40) 1s both, blink 1s infinite 4s;
+      }
+
+      @keyframes typewriter {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+
+      @keyframes blink {
+        0%, 50% {
+          border-right-color: transparent;
+        }
+        51%, 100% {
+          border-right-color: #9A8478;
+        }
+      }
+
+      .hero-content {
+        animation: fadeIn 2s ease-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
       }
 
@@ -122,13 +450,101 @@
       .search-container {
         max-width: 800px;
         margin: -50px auto 50px;
-        background: #1a1a3a;
+        background: linear-gradient(135deg, #1E130C 0%, #9A8478 50%, #1E130C 100%);
+        background-size: 200% 200%;
         padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        border-radius: 15px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
         position: relative;
         z-index: 2;
-        border: 1px solid #007bff;
+        border: 2px solid #9A8478;
+        animation: slideInUp 1s ease-out 0.8s both, containerGlow 4s ease-in-out infinite;
+      }
+
+      .search-container::before {
+        content: '';
+        position: absolute;
+        top: -3px;
+        left: -3px;
+        right: -3px;
+        bottom: -3px;
+        background: linear-gradient(45deg, #9A8478, #C4B5A0, #9A8478, #1E130C);
+        background-size: 400% 400%;
+        border-radius: 18px;
+        z-index: -1;
+        animation: borderGlow 4s ease-in-out infinite, gradientMove 6s ease-in-out infinite;
+      }
+
+      @keyframes slideInUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes borderGlow {
+        0%, 100% {
+          opacity: 0.5;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes containerGlow {
+        0%, 100% {
+          background-position: 0% 50%;
+          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+        50% {
+          background-position: 100% 50%;
+          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 30px rgba(154, 132, 120, 0.3);
+        }
+      }
+
+      @keyframes gradientMove {
+        0%, 100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      @keyframes titleGlow {
+        0%, 100% {
+          background-position: 0% 50%;
+          text-shadow: 0 0 20px rgba(154, 132, 120, 0.6);
+        }
+        50% {
+          background-position: 100% 50%;
+          text-shadow: 0 0 30px rgba(154, 132, 120, 0.9),
+                       0 0 40px rgba(154, 132, 120, 0.7);
+        }
+      }
+
+      @keyframes titleUnderline {
+        0%, 100% {
+          width: 0;
+          opacity: 0;
+        }
+        50% {
+          width: 80%;
+          opacity: 1;
+        }
+      }
+
+      @keyframes featureFloat {
+        0%, 100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
       }
 
       .search-box {
@@ -139,69 +555,96 @@
 
       .search-input {
         flex: 1;
-        padding: 15px;
-        border: 2px solid #3a3a5a;
-        border-radius: 5px;
+        padding: 18px;
+        border: 2px solid #9A8478;
+        border-radius: 8px;
         font-size: 16px;
-        background-color: #2a2a4a;
-        color: #e0e0e0;
-        transition: all 0.3s ease;
+        background: linear-gradient(135deg, #1E130C, rgba(154, 132, 120, 0.1));
+        color: #C4B5A0;
+        transition: all 0.4s ease;
+        font-weight: 500;
       }
 
       .search-input::placeholder {
-        color: #b0b0b0;
+        color: #9A8478;
+        opacity: 0.7;
       }
 
       .search-input:hover,
       .cuisine-selector:hover {
-        border-color: #87ceeb;
-        box-shadow: 0 0 15px rgba(135, 206, 235, 0.6),
-          0 0 25px rgba(135, 206, 235, 0.4);
+        border-color: #9A8478;
+        box-shadow: 0 0 15px rgba(154, 132, 120, 0.6),
+          0 0 25px rgba(154, 132, 120, 0.4);
         transform: translateY(-2px);
       }
 
       .search-input:focus {
-        border-color: #87ceeb;
+        border-color: #9A8478;
         outline: none;
-        box-shadow: 0 0 20px rgba(135, 206, 235, 0.8),
-          0 0 35px rgba(135, 206, 235, 0.5);
+        box-shadow: 0 0 20px rgba(154, 132, 120, 0.8),
+          0 0 35px rgba(154, 132, 120, 0.5);
         transform: translateY(-2px);
       }
 
       .cuisine-selector {
-        padding: 15px;
-        border: 2px solid #3a3a5a;
-        border-radius: 5px;
+        padding: 18px;
+        border: 2px solid #9A8478;
+        border-radius: 8px;
         font-size: 16px;
-        background: #2a2a4a;
-        color: #e0e0e0;
+        background: linear-gradient(135deg, #1E130C, rgba(154, 132, 120, 0.1));
+        color: #C4B5A0;
         cursor: pointer;
         appearance: none;
-        background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23e0e0e0%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+        background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23C4B5A0%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
         background-repeat: no-repeat;
         background-position: right 15px top 50%;
         background-size: 12px auto;
-        transition: all 0.3s ease;
+        transition: all 0.4s ease;
+        font-weight: 500;
       }
 
       .search-btn,
       .list-all-btn {
-        padding: 15px 25px;
-        background-color: #007bff;
-        color: white;
+        padding: 18px 30px;
+        background: linear-gradient(135deg, #9A8478, #C4B5A0);
+        background-size: 200% 200%;
+        color: #1E130C;
         border: none;
-        border-radius: 5px;
+        border-radius: 8px;
         font-size: 16px;
-        font-weight: 600;
+        font-weight: 700;
         cursor: pointer;
-        transition: all 0.3s ease;
+        transition: all 0.4s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        position: relative;
+        overflow: hidden;
       }
 
       .search-btn:hover,
       .list-all-btn:hover {
-        background-color: #0056b3;
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+        background: linear-gradient(135deg, #C4B5A0, #9A8478);
+        background-position: 100% 50%;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(154, 132, 120, 0.6);
+        color: #1E130C;
+      }
+
+      .search-btn::before,
+      .list-all-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s ease;
+      }
+
+      .search-btn:hover::before,
+      .list-all-btn:hover::before {
+        left: 100%;
       }
 
       /* Autocomplete Suggestions */
@@ -210,8 +653,8 @@
         top: 100%; /* Position below the search input */
         left: 0;
         right: 0;
-        background-color: #2a2a4a;
-        border: 1px solid #3a3a5a;
+        background: linear-gradient(135deg, #1E130C, #9A8478);
+        border: 1px solid #9A8478;
         border-top: none;
         border-radius: 0 0 5px 5px;
         max-height: 200px;
@@ -228,45 +671,74 @@
       }
 
       .autocomplete-suggestion-item:hover {
-        background-color: #3a3a5a;
+        background-color: rgba(154, 132, 120, 0.3);
       }
 
       /* Recipe Details Section */
       .recipe-details-section {
         padding: 50px 20px;
-        background-color: #0a0a1a;
+        background: linear-gradient(135deg, #1E130C, rgba(154, 132, 120, 0.1));
         display: none; /* Hidden by default */
+        min-height: 400px;
+        position: relative;
+        z-index: 1;
       }
 
       .recipe-details-content {
         max-width: 800px;
         margin: 0 auto;
-        background: #1a1a3a;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-        border: 1px solid #007bff;
+        background: linear-gradient(135deg, #1E130C, #9A8478);
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        border: 2px solid #9A8478;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .recipe-details-content::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(154, 132, 120, 0.1), transparent);
+        transition: left 0.6s ease;
+      }
+
+      .recipe-details-content:hover::before {
+        left: 100%;
       }
 
       .recipe-details-content h2 {
-        font-size: 2.5rem;
-        color: #007bff;
+        font-size: 2.8rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #9A8478, #C4B5A0, #9A8478);
+        background-size: 200% 200%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
         margin-bottom: 20px;
         text-align: center;
+        text-shadow: 0 0 20px rgba(154, 132, 120, 0.6);
+        letter-spacing: 2px;
       }
 
       .recipe-details-content h3 {
         font-size: 1.8rem;
-        color: #87ceeb;
+        color: #C4B5A0;
         margin-top: 25px;
         margin-bottom: 10px;
       }
 
       .recipe-details-content p,
       .recipe-details-content ul {
-        color: #b0b0b0;
+        color: #C4B5A0;
         margin-bottom: 15px;
         line-height: 1.8;
+        font-size: 1.1rem;
+        text-shadow: 0 0 5px rgba(196, 181, 160, 0.3);
       }
 
       .recipe-details-content ul {
@@ -301,21 +773,44 @@
       /* Food Facts Slider */
       .facts-section {
         padding: 50px 20px;
-        background-color: #0a0a1a;
+        background-color: #1E130C;
+        min-height: 400px;
+        display: block !important;
       }
 
       .section-title {
         text-align: center;
         margin-bottom: 40px;
-        font-size: 2.5rem;
-        color: #007bff;
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        font-size: 2.8rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #9A8478, #C4B5A0, #9A8478);
+        background-size: 200% 200%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 0 0 20px rgba(154, 132, 120, 0.6);
+        letter-spacing: 2px;
+        animation: titleGlow 4s ease-in-out infinite;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #9A8478, #C4B5A0, #9A8478);
+        animation: titleUnderline 3s ease-in-out infinite;
       }
 
       .slider-container {
         max-width: 1000px;
         margin: 0 auto;
         position: relative;
+        padding: 20px 0;
       }
 
       .slider {
@@ -335,7 +830,7 @@
       .fact-card {
         min-width: 300px;
         max-width: 300px;
-        background: #1a1a3a;
+        background: linear-gradient(135deg, #1E130C, #9A8478);
         border-radius: 10px;
         padding: 30px;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -343,29 +838,62 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        transition: all 0.3s ease;
-        border: 1px solid #3a3a5a;
+        transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border: 1px solid #9A8478;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .fact-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(196, 181, 160, 0.2), transparent);
+        transition: left 0.5s;
+      }
+
+      .fact-card:hover::before {
+        left: 100%;
       }
 
       .fact-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-        border-color: #007bff;
+        transform: translateY(-15px) rotateY(5deg);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        border-color: #C4B5A0;
       }
 
       .fact-card i {
         font-size: 3rem;
-        color: #007bff;
+        color: #C4B5A0;
         margin-bottom: 15px;
+        animation: iconFloat 3s ease-in-out infinite;
+      }
+
+      @keyframes iconFloat {
+        0%, 100% {
+          transform: translateY(0) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-5px) rotate(5deg);
+        }
       }
 
       .fact-card h3 {
         margin-bottom: 15px;
-        color: #e0e0e0;
+        color: #C4B5A0;
+        font-size: 1.3rem;
+        font-weight: 600;
+        text-shadow: 0 0 10px rgba(196, 181, 160, 0.4);
       }
 
       .fact-card p {
-        color: #b0b0b0;
+        color: #e0e0e0;
+        font-size: 1rem;
+        line-height: 1.5;
+        text-shadow: 0 0 5px rgba(224, 224, 224, 0.3);
       }
 
       .slider-btn {
@@ -374,7 +902,7 @@
         transform: translateY(-50%);
         width: 50px;
         height: 50px;
-        background: #007bff;
+        background: linear-gradient(135deg, #9A8478, #C4B5A0);
         color: white;
         border-radius: 50%;
         display: flex;
@@ -388,7 +916,7 @@
       }
 
       .slider-btn:hover {
-        background-color: #0056b3;
+        background: linear-gradient(135deg, #C4B5A0, #9A8478);
         transform: translateY(-50%) scale(1.1);
       }
 
@@ -402,8 +930,14 @@
 
       /* Testimonials */
       .testimonials {
-        padding: 50px 20px;
-        background-color: #05050f;
+        padding: 80px 20px;
+        background: linear-gradient(135deg, #1E130C, rgba(154, 132, 120, 0.1));
+        min-height: 600px;
+        display: block !important;
+        position: relative;
+        z-index: 1;
+        margin-top: 50px;
+        border-top: 2px solid #9A8478;
       }
 
       .testimonial-grid {
@@ -412,20 +946,56 @@
         gap: 30px;
         max-width: 1200px;
         margin: 0 auto;
+        padding: 20px 0;
+        opacity: 1 !important;
+        visibility: visible !important;
       }
 
       .testimonial-card {
-        background: #1a1a3a;
-        border-radius: 10px;
-        padding: 30px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        border: 1px solid #3a3a5a;
+        background: linear-gradient(135deg, #1E130C, #9A8478);
+        border-radius: 15px;
+        padding: 40px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        border: 3px solid #9A8478;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+        min-height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+
+      .testimonial-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(196, 181, 160, 0.1), transparent);
+        transition: left 0.6s ease;
+      }
+
+      .testimonial-card:hover::before {
+        left: 100%;
+      }
+
+      .testimonial-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        border-color: #C4B5A0;
       }
 
       .testimonial-card p {
         font-style: italic;
         margin-bottom: 20px;
-        color: #b0b0b0;
+        color: #C4B5A0;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        text-shadow: 0 0 10px rgba(196, 181, 160, 0.3);
       }
 
       .testimonial-author {
@@ -439,26 +1009,32 @@
         border-radius: 50%;
         margin-right: 15px;
         object-fit: cover;
-        border: 2px solid #007bff;
+        border: 2px solid #9A8478;
       }
 
       .author-info h4 {
-        color: #007bff;
+        color: #9A8478;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 5px;
+        text-shadow: 0 0 10px rgba(154, 132, 120, 0.4);
       }
 
       .author-info p {
         font-style: normal;
-        color: #7f8c8d;
+        color: #C4B5A0;
         margin: 0;
+        font-size: 0.9rem;
+        text-shadow: 0 0 5px rgba(196, 181, 160, 0.3);
       }
 
       /* Footer */
       footer {
-        background-color: #05050f;
+        background-color: #1E130C;
         color: white;
         padding: 30px 20px;
         text-align: center;
-        border-top: 1px solid #007bff;
+        border-top: 1px solid #9A8478;
       }
 
       .footer-content {
@@ -474,7 +1050,7 @@
         font-size: 24px;
         font-weight: 700;
         margin-bottom: 15px;
-        color: #007bff;
+        color: #9A8478;
       }
 
       .footer-about p {
@@ -484,7 +1060,7 @@
       .footer-links h3 {
         margin-bottom: 15px;
         font-size: 18px;
-        color: #007bff;
+        color: #9A8478;
       }
 
       .footer-links ul {
@@ -515,41 +1091,13 @@
         color: #b0b0b0;
       }
 
-      /* Comment Container */
+      /* Comment Container - Clean Version */
       #comment-container {
         position: fixed;
         bottom: 20px;
         left: 20px;
         width: 300px;
-        overflow: visible;
         z-index: 1000;
-      }
-
-      .comment {
-        background: linear-gradient(135deg, #ffffff, #f8f8f8);
-        border-left: 4px solid #ff6b6b;
-        border-radius: 8px 8px 8px 0;
-        padding: 15px;
-        margin-bottom: 10px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        color: #333;
-        font-size: 14px;
-        opacity: 0;
-        transform: translateX(-100%);
-        animation: slideIn 0.5s ease-out forwards;
-      }
-
-      @keyframes slideIn {
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
-      .comment-author {
-        font-weight: bold;
-        color: #ff6b6b;
-        margin-bottom: 5px;
       }
 
       /* Responsive Styles */
@@ -592,15 +1140,13 @@
           right: 5px;
         }
 
-        #comment-container {
-          width: calc(100% - 40px);
-        }
+        /* Comment container responsive removed */
       }
 
       /* Help Section Styles */
       .help-section {
         padding: 50px 20px;
-        background-color: #0a0a1a;
+        background-color: #1E130C;
         color: #e0e0e0;
         display: none; /* Hidden by default */
       }
@@ -608,16 +1154,16 @@
       .help-content {
         max-width: 900px;
         margin: 0 auto;
-        background: #1a1a3a;
+        background: linear-gradient(135deg, #1E130C, #9A8478);
         padding: 40px;
         border-radius: 10px;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-        border: 1px solid #007bff;
+        border: 1px solid #9A8478;
       }
 
       .help-content h2 {
         font-size: 2.8rem;
-        color: #007bff;
+        color: #9A8478;
         margin-bottom: 30px;
         text-align: center;
         text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
@@ -625,10 +1171,10 @@
 
       .help-content h3 {
         font-size: 1.8rem;
-        color: #87ceeb;
+        color: #C4B5A0;
         margin-top: 30px;
         margin-bottom: 15px;
-        border-bottom: 1px solid #3a3a5a;
+        border-bottom: 1px solid #9A8478;
         padding-bottom: 5px;
       }
 
@@ -686,7 +1232,7 @@
       }
 
       .help-content .contact-info a {
-        color: #007bff;
+        color: #9A8478;
         text-decoration: none;
       }
 
@@ -702,12 +1248,67 @@
 
       .help-content .troubleshooting-tip::before {
         content: "\2022"; /* Bullet point */
-        color: #87ceeb;
+        color: #C4B5A0;
         font-weight: bold;
         display: inline-block;
         width: 1em;
         margin-left: -1em;
       }
+
+      /* Comment/Message Styling */
+      .comment {
+        background: white;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        border-top: 3px solid #9A8478;
+        animation: slideIn 0.5s ease-out;
+        max-width: 300px;
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateX(-100%);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .comment-author {
+        font-weight: bold;
+        color: #9A8478;
+        margin-bottom: 5px;
+        font-size: 14px;
+      }
+
+      .comment-text {
+        color: #333;
+        font-size: 13px;
+        line-height: 1.4;
+      }
+      .tab-btn {
+        padding: 12px 24px;
+        margin: 0 10px;
+        background: linear-gradient(135deg, #9A8478, #C4B5A0);
+        color: #1E130C;
+        font-weight: 600;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+      .tab-btn:hover,
+      .tab-btn.active {
+        background: linear-gradient(135deg, #C4B5A0, #9A8478);
+        box-shadow: 0 8px 25px rgba(154, 132, 120, 0.6);
+        transform: translateY(-2px);
+      }
+      
     </style>
     <link
       rel="stylesheet"
@@ -721,26 +1322,36 @@
   <body>
     <!-- Header Section -->
     <header>
-      <div class="logo">FOOD<span>IES</span></div>
+      <div class="logo">CULINARY<span> HAVEN</span></div>
       <div class="nav-links">
         <a href="{{url_for('main')}}">Home</a>
         <a href="{{url_for('contacts')}}">Contacts</a>
         <a href="#help" id="help-link">Help</a>
-        <a href="{{url_for('login')}}">Login</a>
-        <a href="{{url_for('signup')}}">Signup</a>
+        {% if session.get('user') %}
+          <a href="{{ url_for('logout') }}">Logout</a>
+        {% else %}
+          <a href="{{url_for('login')}}">Login</a>
+          <a href="{{url_for('signup')}}">Signup</a>
+        {% endif %}
       </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero" id="home-section">
-      <div class="hero-content">
-        <h1>Welcome to Foodies</h1>
+    <section class="hero" id="home-section" style="display: block !important; opacity: 1 !important;">
+      <div class="hero-content" style="opacity: 1 !important;">
+        <h1 class="animated-text" style="opacity: 1 !important;">Culinary Haven</h1>
+        <p class="hero-subtitle" style="opacity: 1 !important;">Discover, cook, and share the world's most exquisite recipes</p>
+        <div class="hero-features" style="opacity: 1 !important;">
+          <span class="feature-tag">🍳 Authentic Recipes</span>
+          <span class="feature-tag">🌍 Global Cuisines</span>
+          <span class="feature-tag">👨‍🍳 Expert Tips</span>
+        </div>
       </div>
     </section>
 
     <!-- Search Section -->
-    <section id="search-section">
-      <div class="search-container">
+    <section id="search-section" class="fade-in" style="display: block !important; opacity: 1 !important;">
+      <div class="search-container" style="opacity: 1 !important;">
         <div class="search-box">
           <input
             type="text"
@@ -759,6 +1370,17 @@
         <div class="autocomplete-suggestions"></div>
       </div>
     </section>
+    <!-- Food Menu Tabs -->
+<section id="food-menu" style="padding: 40px; background-color: #1E130C;">
+  <h2 class="section-title">Explore Dishes by Cuisine</h2>
+  <div style="text-align: center; margin-bottom: 20px;">
+    <button class="tab-btn" data-cuisine="indian">Indian</button>
+    <button class="tab-btn" data-cuisine="italian">Italian</button>
+    <button class="tab-btn" data-cuisine="chinese">Chinese</button>
+  </div>
+  <ul id="food-list" style="list-style: none; padding-left: 0; display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;"></ul>
+</section>
+
 
     <!-- Recipe Details Section (New) -->
     <section class="recipe-details-section" id="recipe-details-section">
@@ -774,14 +1396,29 @@
     </section>
 
     <!-- Food Facts Slider -->
-    <section class="facts-section" id="facts-section">
-      <h2 class="section-title">Did You Know?</h2>
-      <div class="slider-container">
+    <section class="facts-section" id="facts-section" style="display: block !important; opacity: 1 !important;">
+      <h2 class="section-title slide-in-left" style="opacity: 1 !important;">Did You Know?</h2>
+      <div class="slider-container scale-in">
         <button class="slider-btn prev-btn">
           <i class="fas fa-chevron-left"></i>
         </button>
         <div class="slider">
           <!-- Facts will be dynamically generated here -->
+          <div class="fact-card">
+            <i class="fas fa-leaf"></i>
+            <h3>Ancient Superfood</h3>
+            <p>Aztecs and Mayans considered chia seeds so valuable they were used as currency!</p>
+          </div>
+          <div class="fact-card">
+            <i class="fas fa-ice-cream"></i>
+            <h3>Chilly History</h3>
+            <p>Ice cream cones were invented at the 1904 World's Fair when an ice cream vendor ran out of cups and used waffles from a neighboring stall.</p>
+          </div>
+          <div class="fact-card">
+            <i class="fas fa-wine-glass-alt"></i>
+            <h3>Champagne Chemistry</h3>
+            <p>A bottle of champagne contains about 49 million bubbles, and the pressure inside is three times that of a car tire!</p>
+          </div>
         </div>
         <button class="slider-btn next-btn">
           <i class="fas fa-chevron-right"></i>
@@ -790,12 +1427,12 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials-section">
-      <h2 class="section-title">What Our Users Say</h2>
-      <div class="testimonial-grid">
-        <div class="testimonial-card">
+    <section class="testimonials" id="testimonials-section" style="display: block !important; opacity: 1 !important; visibility: visible !important; min-height: 500px !important; position: relative !important; z-index: 1 !important;">
+      <h2 class="section-title" style="opacity: 1 !important; visibility: visible !important;">What Our Users Say</h2>
+      <div class="testimonial-grid" style="opacity: 1 !important; visibility: visible !important;">
+        <div class="testimonial-card" style="opacity: 1 !important; visibility: visible !important;">
           <p>
-            "Foodies has completely changed how I cook! The recipes are easy to
+            "Culinary Haven has completely changed how I cook! The recipes are easy to
             follow and absolutely delicious."
           </p>
           <div class="testimonial-author">
@@ -810,10 +1447,10 @@
             </div>
           </div>
         </div>
-        <div class="testimonial-card">
+        <div class="testimonial-card" style="opacity: 1 !important; visibility: visible !important;">
           <p>
             "As a professional chef, I appreciate the authentic recipes and
-            cooking techniques shared on Foodies."
+            cooking techniques shared on Culinary Haven."
           </p>
           <div class="testimonial-author">
             <img
@@ -827,7 +1464,7 @@
             </div>
           </div>
         </div>
-        <div class="testimonial-card">
+        <div class="testimonial-card" style="opacity: 1 !important; visibility: visible !important;">
           <p>
             "The cultural food facts have made dinnertime educational and fun
             for my whole family."
@@ -1019,10 +1656,10 @@
     <footer>
       <div class="footer-content">
         <div class="footer-about">
-          <div class="footer-logo">FOODIES</div>
-          <p>
-            Discover, cook, and share the world's best recipes with Foodies.
-          </p>
+          <div class="footer-logo">CARBON PULSE</div>
+                      <p>
+              Discover, cook, and share the world's most exquisite recipes with Carbon Pulse.
+            </p>
         </div>
         <div class="footer-links">
           <h3>Quick Links</h3>
@@ -1052,16 +1689,86 @@
         </div>
       </div>
       <div class="copyright">
-        <p>&copy; 2023 Foodies.com. All rights reserved.</p>
+        <p>&copy; 2023 Carbon Pulse. All rights reserved.</p>
       </div>
     </footer>
 
     <!-- Comment Container -->
-    <div id="comment-container"></div>
+    <!-- Comment Container for rotating messages -->
+    <div id="comment-container" style="position: fixed; bottom: 20px; left: 20px; z-index: 1000; max-width: 300px;"></div>
 
     <script>
-      // Slider functionality
+      // Scroll animations simplified - no observer needed
+
+      // Observe all animated elements
       document.addEventListener("DOMContentLoaded", function () {
+        console.log('DOM loaded, checking elements...');
+        
+        // Debug: Check if sections exist
+        const heroSection = document.querySelector('.hero');
+        const searchSection = document.querySelector('#search-section');
+        const factsSection = document.querySelector('#facts-section');
+        const testimonialsSection = document.querySelector('#testimonials-section');
+        
+        console.log('Hero section:', heroSection);
+        console.log('Search section:', searchSection);
+        console.log('Facts section:', factsSection);
+        console.log('Testimonials section:', testimonialsSection);
+        
+        // Force visibility of all sections
+        [heroSection, searchSection, factsSection, testimonialsSection].forEach(section => {
+          if (section) {
+            section.style.display = 'block';
+            section.style.opacity = '1';
+            section.style.visibility = 'visible';
+            console.log('Section made visible:', section.id || section.className);
+          }
+        });
+        
+        // Additional check for testimonials
+        const testimonialsCards = document.querySelectorAll('.testimonial-card');
+        console.log('Testimonial cards found:', testimonialsCards.length);
+        testimonialsCards.forEach((card, index) => {
+          card.style.opacity = '1';
+          card.style.visibility = 'visible';
+          card.style.display = 'block';
+          card.style.position = 'relative';
+          card.style.zIndex = '1';
+          console.log(`Testimonial card ${index + 1} made visible`);
+        });
+        
+        // Force testimonials grid to be visible
+        const testimonialsGrid = document.querySelector('.testimonial-grid');
+        if (testimonialsGrid) {
+          testimonialsGrid.style.opacity = '1';
+          testimonialsGrid.style.visibility = 'visible';
+          testimonialsGrid.style.display = 'grid';
+          console.log('Testimonials grid made visible');
+        }
+        
+        // Force testimonials section to be visible (using existing variable)
+        if (testimonialsSection) {
+          testimonialsSection.style.display = 'block';
+          testimonialsSection.style.opacity = '1';
+          testimonialsSection.style.visibility = 'visible';
+          testimonialsSection.style.position = 'relative';
+          testimonialsSection.style.zIndex = '1';
+          testimonialsSection.style.marginTop = '50px';
+          console.log('Testimonials section forced visible');
+        }
+        
+        // Simplified - no complex animations
+        console.log('Page loaded successfully');
+
+        // Simple visibility setup - no complex animations
+        const heroTitle = document.querySelector('.animated-text');
+        const heroSubtitle = document.querySelector('.hero-subtitle');
+        
+        // Ensure hero elements are visible
+        if (heroTitle) heroTitle.style.opacity = '1';
+        if (heroSubtitle) heroSubtitle.style.opacity = '1';
+
+        // Slider functionality
         const slider = document.querySelector(".slider");
         const prevBtn = document.querySelector(".prev-btn");
         const nextBtn = document.querySelector(".next-btn");
@@ -5337,6 +6044,7 @@
 
         // Function to display recipe details
         function displayRecipeDetails(dish) {
+          console.log('Displaying recipe details for:', dish.name);
           recipeTitle.textContent = dish.name;
           recipeDescription.textContent = dish.description;
 
@@ -5363,6 +6071,9 @@
 
           recipeInstructions.textContent = dish.instructions;
           recipeDetailsSection.style.display = "block"; // Show the recipe details section
+          recipeDetailsSection.style.opacity = "1";
+          recipeDetailsSection.style.visibility = "visible";
+          console.log('Recipe details section made visible');
           recipeDetailsSection.scrollIntoView({ behavior: "smooth" }); // Scroll to it
         }
 
@@ -5375,6 +6086,8 @@
           recipeIngredients.innerHTML = "";
           recipeInstructions.textContent = "";
         }
+
+        // Test function removed
 
         // Function to handle cuisine selection and display relevant dishes
         function onCuisineSelect(cuisine) {
@@ -5414,6 +6127,7 @@
 
         // Event listener for search input for real-time suggestions
         searchInput.addEventListener("input", function () {
+          console.log('Search input changed:', searchInput.value);
           const searchTerm = searchInput.value.toLowerCase().trim();
           const selectedCuisine = cuisineSelector.value;
 
@@ -5469,8 +6183,10 @@
         });
 
         searchBtn.addEventListener("click", () => {
+          console.log('Search button clicked');
           const searchTerm = searchInput.value.trim();
           const cuisine = cuisineSelector.value;
+          console.log('Search term:', searchTerm, 'Cuisine:', cuisine);
 
           let dishesToSearch = [];
           if (cuisine === "indian") {
@@ -5489,9 +6205,11 @@
           const foundDish = dishesToSearch.find(
             (dish) => dish.name.toLowerCase() === searchTerm.toLowerCase()
           );
+          console.log('Found dish:', foundDish);
           if (foundDish) {
             displayRecipeDetails(foundDish);
           } else {
+            console.log('No dish found, showing alert');
             alert(
               `No ${cuisine} dish found matching "${searchTerm}". Please select from suggestions or try another search.`
             );
@@ -5613,92 +6331,60 @@
 
         // Initialize facts slider
         updateFactsSlider();
+        
+        // Debug: Check if facts are generated
+        console.log('Facts generated:', displayedFacts.length);
+        console.log('Slider element:', document.querySelector(".slider"));
+        // Simple rotating comments system
         const comments = [
-          {
-            author: "Priya Sharma",
-            text: "This app is amazing! Found the perfect pasta recipe.",
-          },
-          {
-            author: "Rahul Singh",
-            text: "Love the authentic Italian recipes here!",
-          },
-          {
-            author: "Anjali Devi",
-            text: "Finally, recipes that actually work!",
-          },
-          {
-            author: "Vikram Kumar",
-            text: "The Indian curry recipes are spot on!",
-          },
-          {
-            author: "Deepa Patel",
-            text: "Best dessert recipes I've ever tried!",
-          },
-          {
-            author: "Sanjay Gupta",
-            text: "Great variety of nutritious meal options.",
-          },
+          { name: "Priya Sharma", text: "This app is amazing! Found the perfect pasta recipe." },
+          { name: "Rahul Singh", text: "Love the authentic Italian recipes here!" },
+          { name: "Anjali Devi", text: "Finally, recipes that actually work!" },
+          { name: "Vikram Kumar", text: "The Indian curry recipes are spot on!" },
+          { name: "Deepa Patel", text: "Best dessert recipes I've ever tried!" },
+          { name: "Sanjay Gupta", text: "Great variety of nutritious meal options." }
         ];
 
-        let currentCommentIndex = 0;
-        let commentInterval;
+        let currentIndex = 0;
 
-        function displayComment() {
-          const container = document.getElementById("comment-container");
+        function showNextComment() {
+          const commentContainer = document.getElementById("comment-container");
+          if (!commentContainer) return;
 
-          // Clear existing comments
-          container.innerHTML = "";
-
-          // Create new comment
-          const commentDiv = document.createElement("div");
-          commentDiv.className = "comment";
-
-          const comment = comments[currentCommentIndex];
-          commentDiv.innerHTML = `
-            <div class="comment-author">${comment.author}</div>
-            <div>${comment.text}</div>
+          const comment = comments[currentIndex];
+          
+          commentContainer.innerHTML = `
+            <div style="
+              background: white;
+              border-radius: 8px;
+              padding: 15px;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+              border-top: 3px solid #9A8478;
+              max-width: 300px;
+              font-size: 13px;
+              line-height: 1.4;
+              position: fixed;
+              bottom: 20px;
+              left: 20px;
+              z-index: 9999;
+            ">
+              <div style="font-weight: bold; color: #9A8478; margin-bottom: 5px; font-size: 14px;">
+                ${comment.name}
+              </div>
+              <div style="color: #333;">
+                ${comment.text}
+              </div>
+            </div>
           `;
 
-          container.appendChild(commentDiv);
-
-          // Move to next comment
-          currentCommentIndex = (currentCommentIndex + 1) % comments.length;
-
-          // Remove comment after 3.8 seconds
-          setTimeout(() => {
-            if (commentDiv.parentNode) {
-              commentDiv.style.animation = "slideIn 0.5s ease-out reverse";
-              setTimeout(() => {
-                if (commentDiv.parentNode) {
-                  commentDiv.remove();
-                }
-              }, 500);
-            }
-          }, 3800);
+          currentIndex = (currentIndex + 1) % comments.length;
         }
 
-        // Start displaying comments
-        displayComment();
-        commentInterval = setInterval(displayComment, 10000);
+        // Show first comment immediately
+        showNextComment();
 
-        // Pause comments when page is hidden
-        document.addEventListener("visibilitychange", () => {
-          if (document.hidden) {
-            clearInterval(commentInterval);
-          } else {
-            commentInterval = setInterval(displayComment, 5000);
-          }
-        });
-
-        // Pause comments on hover
-        const commentContainer = document.getElementById("comment-container");
-        commentContainer.addEventListener("mouseenter", () => {
-          clearInterval(commentInterval);
-        });
-
-        commentContainer.addEventListener("mouseleave", () => {
-          commentInterval = setInterval(displayComment, 5000);
-        });
+        // Change comment every 10 seconds
+        setInterval(showNextComment, 10000);
 
         // Help Section Functionality
         const helpLink = document.getElementById("help-link");
@@ -5773,8 +6459,50 @@
             event.preventDefault();
           }
         });
+
+        // Enhanced hover effects for cards
+        const cards = document.querySelectorAll('.fact-card, .testimonial-card');
+        cards.forEach(card => {
+          card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-15px) rotateY(5deg) scale(1.02)';
+          });
+          
+          card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) rotateY(0deg) scale(1)';
+          });
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+          const scrolled = window.pageYOffset;
+          const hero = document.querySelector('.hero');
+          const rate = scrolled * -0.5;
+          hero.style.transform = `translateY(${rate}px)`;
+        });
+
+        // Ripple effects removed for simplicity
+
+        // Placeholder text rotation removed for simplicity
       });
+
+      // Particle effects removed for simplicity
+
+      // Simplified CSS without particle effects
+      const style = document.createElement('style');
+      style.textContent = `
+        .search-input {
+          transition: all 0.3s ease;
+        }
+        
+        .search-input:focus {
+          transform: scale(1.02);
+        }
+      `;
+      document.head.appendChild(style);
     </script>
+    
+    <!-- Fallback script removed for simplicity -->
+    
     <script type="text/javascript">
   (function(d, t) {
       var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
@@ -5790,6 +6518,226 @@
       }
       v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
   })(document, 'script');
-</script>
+  <script>
+    <script>
+      const indianDishes = [
+        {
+          name: "Butter Chicken",
+          description: "Rich creamy tomato-based chicken curry.",
+          ingredients: ["Chicken", "Tomato", "Butter", "Cream", "Spices"],
+          instructions: "Cook chicken. Make sauce. Combine.",
+          type: "non-veg"
+        },
+        {
+          name: "Paneer Tikka",
+          description: "Grilled paneer cubes marinated in spices.",
+          ingredients: ["Paneer", "Yogurt", "Spices"],
+          instructions: "Marinate and grill paneer.",
+          type: "veg"
+        }
+      ];
+    </script>
+    
+    document.addEventListener("DOMContentLoaded", function () {
+      const foodList = document.getElementById("food-list");
+      const tabButtons = document.querySelectorAll(".tab-btn");
+  
+      const dishes = {
+        indian: indianDishes,
+        italian: [
+          {
+            name: "Margherita Pizza",
+            description: "Classic Italian pizza with fresh mozzarella, basil & tomatoes.",
+            ingredients: ["Dough", "Tomato sauce", "Mozzarella", "Basil", "Olive oil"],
+            instructions: "Assemble and bake in a hot oven.",
+            type: "veg"
+          },
+          {
+            name: "Pasta Carbonara",
+            description: "Creamy pasta with eggs, cheese, pancetta, and pepper.",
+            ingredients: ["Spaghetti", "Eggs", "Parmesan", "Pancetta", "Pepper"],
+            instructions: "Cook pasta, mix hot with whisked eggs and cheese. Stir with pancetta.",
+            type: "non-veg"
+          }
+        ],
+        chinese: [
+          {
+            name: "Chow Mein",
+            description: "Stir-fried noodles with vegetables and meat or tofu.",
+            ingredients: ["Noodles", "Soy sauce", "Vegetables", "Meat/Tofu"],
+            instructions: "Stir-fry everything in high heat.",
+            type: "non-veg"
+          },
+          {
+            name: "Veg Manchurian",
+            description: "Fried veggie balls in tangy Indo-Chinese sauce.",
+            ingredients: ["Cabbage", "Carrot", "Flour", "Soy sauce", "Garlic"],
+            instructions: "Fry balls and toss in sauce.",
+            type: "veg"
+          }
+        ]
+      };
+  
+      function loadDishes(cuisine) {
+        foodList.innerHTML = "";
+        const items = dishes[cuisine];
+        items.forEach((dish, index) => {
+          const li = document.createElement("li");
+          li.textContent = dish.name;
+          li.style.cursor = "pointer";
+          li.style.padding = "12px 20px";
+          li.style.background = "#9A8478";
+          li.style.color = "#1E130C";
+          li.style.borderRadius = "8px";
+          li.style.fontWeight = "600";
+          li.style.transition = "all 0.3s ease";
+          li.style.boxShadow = "0 5px 15px rgba(0,0,0,0.3)";
+          li.addEventListener("mouseover", () => {
+            li.style.transform = "scale(1.05)";
+          });
+          li.addEventListener("mouseout", () => {
+            li.style.transform = "scale(1)";
+          });
+          li.addEventListener("click", () => {
+            const recipe = dish;
+            document.getElementById("recipe-details-section").style.display = "block";
+            document.getElementById("recipe-title").textContent = recipe.name;
+            document.getElementById("recipe-type-indicator").innerHTML =
+              recipe.type === "veg"
+                ? '<div class="veg-indicator">VEG</div>'
+                : '<div class="nonveg-indicator">NON-VEG</div>';
+            document.getElementById("recipe-description").textContent = recipe.description;
+            document.getElementById("recipe-ingredients").innerHTML =
+              recipe.ingredients.map((ing) => `<li>${ing}</li>`).join("");
+            document.getElementById("recipe-instructions").textContent = recipe.instructions;
+            document.getElementById("recipe-details-section").scrollIntoView({ behavior: "smooth" });
+          });
+          foodList.appendChild(li);
+        });
+      }
+  
+      loadDishes("indian");
+      document.querySelector('[data-cuisine="indian"]').classList.add("active");
+  
+      tabButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          tabButtons.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          const cuisine = btn.getAttribute("data-cuisine");
+          loadDishes(cuisine);
+        });
+      });
+    });
+    <script>
+      const indianDishes = [
+        {
+          name: "Butter Chicken",
+          description: "Rich creamy tomato-based chicken curry.",
+          ingredients: ["Chicken", "Tomato", "Butter", "Cream", "Spices"],
+          instructions: "Cook chicken. Make sauce. Combine.",
+          type: "non-veg"
+        },
+        {
+          name: "Paneer Tikka",
+          description: "Grilled paneer cubes marinated in spices.",
+          ingredients: ["Paneer", "Yogurt", "Spices"],
+          instructions: "Marinate and grill paneer.",
+          type: "veg"
+        }
+      ];
+    
+      const dishes = {
+        indian: indianDishes,
+        italian: [
+          {
+            name: "Margherita Pizza",
+            description: "Classic Italian pizza with fresh mozzarella, basil & tomatoes.",
+            ingredients: ["Dough", "Tomato sauce", "Mozzarella", "Basil", "Olive oil"],
+            instructions: "Assemble and bake in a hot oven.",
+            type: "veg"
+          },
+          {
+            name: "Pasta Carbonara",
+            description: "Creamy pasta with eggs, cheese, pancetta, and pepper.",
+            ingredients: ["Spaghetti", "Eggs", "Parmesan", "Pancetta", "Pepper"],
+            instructions: "Cook pasta, mix hot with whisked eggs and cheese. Stir with pancetta.",
+            type: "non-veg"
+          }
+        ],
+        chinese: [
+          {
+            name: "Chow Mein",
+            description: "Stir-fried noodles with vegetables and meat or tofu.",
+            ingredients: ["Noodles", "Soy sauce", "Vegetables", "Meat/Tofu"],
+            instructions: "Stir-fry everything in high heat.",
+            type: "non-veg"
+          },
+          {
+            name: "Veg Manchurian",
+            description: "Fried veggie balls in tangy Indo-Chinese sauce.",
+            ingredients: ["Cabbage", "Carrot", "Flour", "Soy sauce", "Garlic"],
+            instructions: "Fry balls and toss in sauce.",
+            type: "veg"
+          }
+        ]
+      };
+    
+      document.addEventListener("DOMContentLoaded", function () {
+        const foodList = document.getElementById("food-list");
+        const tabButtons = document.querySelectorAll(".tab-btn");
+    
+        function loadDishes(cuisine) {
+          foodList.innerHTML = "";
+          const items = dishes[cuisine];
+          items.forEach((dish) => {
+            const li = document.createElement("li");
+            li.textContent = dish.name;
+            li.style.cursor = "pointer";
+            li.style.padding = "12px 20px";
+            li.style.background = "#9A8478";
+            li.style.color = "#1E130C";
+            li.style.borderRadius = "8px";
+            li.style.fontWeight = "600";
+            li.style.transition = "all 0.3s ease";
+            li.style.boxShadow = "0 5px 15px rgba(0,0,0,0.3)";
+            li.addEventListener("mouseover", () => {
+              li.style.transform = "scale(1.05)";
+            });
+            li.addEventListener("mouseout", () => {
+              li.style.transform = "scale(1)";
+            });
+            li.addEventListener("click", () => {
+              document.getElementById("recipe-details-section").style.display = "block";
+              document.getElementById("recipe-title").textContent = dish.name;
+              document.getElementById("recipe-type-indicator").innerHTML =
+                dish.type === "veg"
+                  ? '<div style="color:lightgreen;">VEG</div>'
+                  : '<div style="color:tomato;">NON-VEG</div>';
+              document.getElementById("recipe-description").textContent = dish.description;
+              document.getElementById("recipe-ingredients").innerHTML =
+                dish.ingredients.map((ing) => `<li>${ing}</li>`).join("");
+              document.getElementById("recipe-instructions").textContent = dish.instructions;
+              document.getElementById("recipe-details-section").scrollIntoView({ behavior: "smooth" });
+            });
+            foodList.appendChild(li);
+          });
+        }
+    
+        // Load default (Indian)
+        loadDishes("indian");
+        document.querySelector('[data-cuisine="indian"]').classList.add("active");
+    
+        tabButtons.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            tabButtons.forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            const cuisine = btn.getAttribute("data-cuisine");
+            loadDishes(cuisine);
+          });
+        });
+      });
+    </script>
+    
+  </script>
   </body>
 </html>
