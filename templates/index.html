@@ -6538,96 +6538,7 @@
       ];
     </script>
     
-    document.addEventListener("DOMContentLoaded", function () {
-      const foodList = document.getElementById("food-list");
-      const tabButtons = document.querySelectorAll(".tab-btn");
-  
-      const dishes = {
-        indian: indianDishes,
-        italian: [
-          {
-            name: "Margherita Pizza",
-            description: "Classic Italian pizza with fresh mozzarella, basil & tomatoes.",
-            ingredients: ["Dough", "Tomato sauce", "Mozzarella", "Basil", "Olive oil"],
-            instructions: "Assemble and bake in a hot oven.",
-            type: "veg"
-          },
-          {
-            name: "Pasta Carbonara",
-            description: "Creamy pasta with eggs, cheese, pancetta, and pepper.",
-            ingredients: ["Spaghetti", "Eggs", "Parmesan", "Pancetta", "Pepper"],
-            instructions: "Cook pasta, mix hot with whisked eggs and cheese. Stir with pancetta.",
-            type: "non-veg"
-          }
-        ],
-        chinese: [
-          {
-            name: "Chow Mein",
-            description: "Stir-fried noodles with vegetables and meat or tofu.",
-            ingredients: ["Noodles", "Soy sauce", "Vegetables", "Meat/Tofu"],
-            instructions: "Stir-fry everything in high heat.",
-            type: "non-veg"
-          },
-          {
-            name: "Veg Manchurian",
-            description: "Fried veggie balls in tangy Indo-Chinese sauce.",
-            ingredients: ["Cabbage", "Carrot", "Flour", "Soy sauce", "Garlic"],
-            instructions: "Fry balls and toss in sauce.",
-            type: "veg"
-          }
-        ]
-      };
-  
-      function loadDishes(cuisine) {
-        foodList.innerHTML = "";
-        const items = dishes[cuisine];
-        items.forEach((dish, index) => {
-          const li = document.createElement("li");
-          li.textContent = dish.name;
-          li.style.cursor = "pointer";
-          li.style.padding = "12px 20px";
-          li.style.background = "#9A8478";
-          li.style.color = "#1E130C";
-          li.style.borderRadius = "8px";
-          li.style.fontWeight = "600";
-          li.style.transition = "all 0.3s ease";
-          li.style.boxShadow = "0 5px 15px rgba(0,0,0,0.3)";
-          li.addEventListener("mouseover", () => {
-            li.style.transform = "scale(1.05)";
-          });
-          li.addEventListener("mouseout", () => {
-            li.style.transform = "scale(1)";
-          });
-          li.addEventListener("click", () => {
-            const recipe = dish;
-            document.getElementById("recipe-details-section").style.display = "block";
-            document.getElementById("recipe-title").textContent = recipe.name;
-            document.getElementById("recipe-type-indicator").innerHTML =
-              recipe.type === "veg"
-                ? '<div class="veg-indicator">VEG</div>'
-                : '<div class="nonveg-indicator">NON-VEG</div>';
-            document.getElementById("recipe-description").textContent = recipe.description;
-            document.getElementById("recipe-ingredients").innerHTML =
-              recipe.ingredients.map((ing) => `<li>${ing}</li>`).join("");
-            document.getElementById("recipe-instructions").textContent = recipe.instructions;
-            document.getElementById("recipe-details-section").scrollIntoView({ behavior: "smooth" });
-          });
-          foodList.appendChild(li);
-        });
-      }
-  
-      loadDishes("indian");
-      document.querySelector('[data-cuisine="indian"]').classList.add("active");
-  
-      tabButtons.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          tabButtons.forEach((b) => b.classList.remove("active"));
-          btn.classList.add("active");
-          const cuisine = btn.getAttribute("data-cuisine");
-          loadDishes(cuisine);
-        });
-      });
-    });
+
     <script>
       const indianDishes = [
         {
@@ -6739,5 +6650,6 @@
     </script>
     
   </script>
+</script>
   </body>
 </html>
